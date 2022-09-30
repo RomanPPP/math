@@ -32,9 +32,7 @@ class TRS{
 }
 class Node{
     constructor( name, trs = new TRS()){
-        
         this.worldMatrix = m4.identity()
-        this.originMatrix = m4.identity()
         this.parent = null
         this.children = []
         this.trs = trs
@@ -54,16 +52,13 @@ class Node{
           this.parent = parent;
     }
     updateWorldMatrix(parentWorldMatrix){
-        
         let matrix = this.trs.getMatrix()
-        
         if (parentWorldMatrix) {
           matrix = m4.multiply(parentWorldMatrix, matrix);
         }
-        
         this.worldMatrix = matrix
         this.children.forEach((child) => {
-          child.updateWorldMatrix([...matrix]);
+          child.updateWorldMatrix(matrix);
         })
     }
     updatePartsList(){
