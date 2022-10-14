@@ -499,9 +499,12 @@ const m4 = {
     const a33 = 1 - 2 * (q[0] * q[0] + q[1] * q[1]);
     return [a11, a12, a13, 0, a21, a22, a23, 0, a31, a32, a33, 0, 0, 0, 0, 1];
   },
-  rotation: (x, y, z) => this.xRotate(this.yRotate(this.zRotation(z), y), x),
-  rotationFromNormal: (n) =>
-    this.rotation(Math.acos(n[0]), Math.acos(n[1]), Math.acos(n[2])),
+  rotation(x, y, z) {
+    return this.xRotate(this.yRotate(this.zRotation(z), y), x);
+  },
+  rotationFromNormal(n) {
+    this.rotation(Math.acos(n[0]), Math.acos(n[1]), Math.acos(n[2]));
+  },
 };
 function makeZToWMatrix(fudgeFactor) {
   return [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, fudgeFactor, 0, 0, 0, 1];
