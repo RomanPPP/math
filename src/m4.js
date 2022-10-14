@@ -501,7 +501,7 @@ const m4 = {
   },
   rotation: (x, y, z) => this.xRotate(this.yRotate(this.zRotation(z), y), x),
   rotationFromNormal: (n) =>
-    this.rotation(Math.acos(x), Math.acos(y), Math.acos(z)),
+    this.rotation(Math.acos(n[0]), Math.acos(n[1]), Math.acos(n[2])),
 };
 function makeZToWMatrix(fudgeFactor) {
   return [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, fudgeFactor, 0, 0, 0, 1];
