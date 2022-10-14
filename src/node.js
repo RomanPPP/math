@@ -54,7 +54,7 @@ class Node{
     updateWorldMatrix(parentWorldMatrix){
         let matrix = this.trs.getMatrix()
         if (parentWorldMatrix) {
-          matrix = m4.multiply(parentWorldMatrix, matrix);
+          matrix = m4.multiply(parentWorldMatrix, matrix)
         }
         this.worldMatrix = matrix
         this.children.forEach((child) => {
@@ -68,9 +68,6 @@ class Node{
         }
         iter(this, this.parts)
     }
-    
-    
-    
 }
 
 
