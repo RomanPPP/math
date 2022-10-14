@@ -503,7 +503,7 @@ const m4 = {
     return this.xRotate(this.yRotate(this.zRotation(z), y), x);
   },
   rotationFromNormal(n) {
-    this.rotation(Math.acos(n[0]), Math.acos(n[1]), Math.acos(n[2]));
+    return this.rotation(Math.acos(n[0]), Math.acos(n[1]), Math.acos(n[2]));
   },
 };
 function makeZToWMatrix(fudgeFactor) {
