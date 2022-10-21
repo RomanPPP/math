@@ -31,7 +31,7 @@ class TRS {
     const t = this.translation;
     const r = this.rotation;
 
-    let m = m4.translation(dst, t[0], t[1], t[2]);
+    let m = m4.translation( t[0], t[1], t[2]);
 
     m = m4.xRotate(m, r[0]);
     m = m4.yRotate(m, r[1]);
