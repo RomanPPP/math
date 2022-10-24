@@ -554,7 +554,7 @@ const m4 = {
     const sz = norm(mat.slice(8, 11));
 
     
-    const det = determinate(mat);
+    const det = this.determinate(mat);
     if (det < 0) {
       sx = -sx;
     }
