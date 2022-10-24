@@ -1,4 +1,5 @@
 const MatType = Float32Array;
+const {norm} = require('vector')
 const m4 = {
   multiply: function (a, b, dst) {
     dst = dst || new MatType(16);
@@ -505,19 +506,52 @@ const m4 = {
   rotationFromNormal(n) {
     return this.rotation(Math.acos(n[1]), Math.acos(n[2]), Math.acos(n[0]));
   },
+
+  
+  decompose(mat) {
+    let sx = norm(mat.slice(0, 3));
+    const sy = norm(mat.slice(4, 7));
+    const sz = norm(mat.slice(8, 11));
+
+    
+    const det = determinate(mat);
+    if (det < 0) {
+      sx = -sx;
+    }
+    const translation = []
+    const scale = []
+    const Rmatrix = [...mat]
+    translation[0] = mat[12];
+    translation[1] = mat[13];
+    translation[2] = mat[14];
+
+
+    
+
+    const invSX = 1 / sx;
+    const invSY = 1 / sy;
+    const invSZ = 1 / sz;
+
+    Rmatrix[0] *= invSX;
+    Rmatrix[1] *= invSX;
+    Rmatrix[2] *= invSX;
+
+    Rmatrix[4] *= invSY;
+    Rmatrix[5] *= invSY;
+    Rmatrix[6] *= invSY;
+
+    Rmatrix[8] *= invSZ;
+    Rmatrix[9] *= invSZ;
+    Rmatrix[10] *= invSZ;
+
+
+
+    scale[0] = sx;
+    scale[1] = sy;
+    scale[2] = sz;
+    return {translation, Rmatrix, scale }
+  }
 };
-function makeZToWMatrix(fudgeFactor) {
-  return [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, fudgeFactor, 0, 0, 0, 1];
-}
-function cross(a, b) {
-  return [
-    a[1] * b[2] - a[2] * b[1],
-    a[2] * b[0] - a[0] * b[2],
-    a[0] * b[1] - a[1] * b[0],
-  ];
-}
-function subtractVectors(a, b) {
-  return [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
-}
+
 
 module.exports = m4;
