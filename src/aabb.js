@@ -1,7 +1,6 @@
-class AABB{
-    constructor(min, max){
-        this.min = min
-        this.max = max
-    }
-}
-module.exports = AABB
+module.exports = class AABB {
+  constructor(min, max) {
+    this.min = min;
+    this.max = max;
+  }
+};

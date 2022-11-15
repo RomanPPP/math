@@ -1,5 +1,5 @@
 const MatType = Float32Array;
-const {norm} = require('./vector')
+const {norm} = require('./vec3')
 const m4 = {
   multiply: function (a, b, dst) {
     dst = dst || new MatType(16);
