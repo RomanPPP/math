@@ -1,3 +1,4 @@
+import { vec3 } from "./types";
 const dot = (a : vec3, b :vec3) : number => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 const cross = (a : vec3, b : vec3) : vec3 => [
   a[1] * b[2] - b[1] * a[2],
