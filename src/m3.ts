@@ -1,23 +1,24 @@
+import { mat3, mat4, vec3, vec4 } from "./types";
 const m3 = {
   multiply: function (b: mat3, a: mat3): mat3 {
-    var a00 = a[0 * 3 + 0];
-    var a01 = a[0 * 3 + 1];
-    var a02 = a[0 * 3 + 2];
-    var a10 = a[1 * 3 + 0];
-    var a11 = a[1 * 3 + 1];
-    var a12 = a[1 * 3 + 2];
-    var a20 = a[2 * 3 + 0];
-    var a21 = a[2 * 3 + 1];
-    var a22 = a[2 * 3 + 2];
-    var b00 = b[0 * 3 + 0];
-    var b01 = b[0 * 3 + 1];
-    var b02 = b[0 * 3 + 2];
-    var b10 = b[1 * 3 + 0];
-    var b11 = b[1 * 3 + 1];
-    var b12 = b[1 * 3 + 2];
-    var b20 = b[2 * 3 + 0];
-    var b21 = b[2 * 3 + 1];
-    var b22 = b[2 * 3 + 2];
+    const a00 = a[0 * 3 + 0];
+    const a01 = a[0 * 3 + 1];
+    const a02 = a[0 * 3 + 2];
+    const a10 = a[1 * 3 + 0];
+    const a11 = a[1 * 3 + 1];
+    const a12 = a[1 * 3 + 2];
+    const a20 = a[2 * 3 + 0];
+    const a21 = a[2 * 3 + 1];
+    const a22 = a[2 * 3 + 2];
+    const b00 = b[0 * 3 + 0];
+    const b01 = b[0 * 3 + 1];
+    const b02 = b[0 * 3 + 2];
+    const b10 = b[1 * 3 + 0];
+    const b11 = b[1 * 3 + 1];
+    const b12 = b[1 * 3 + 2];
+    const b20 = b[2 * 3 + 0];
+    const b21 = b[2 * 3 + 1];
+    const b22 = b[2 * 3 + 2];
 
     return [
       b00 * a00 + b01 * a10 + b02 * a20,
@@ -32,22 +33,22 @@ const m3 = {
     ];
   },
   xRotation: function (angleInRadians: number): mat3 {
-    var c = Math.cos(angleInRadians);
-    var s = Math.sin(angleInRadians);
+    const c = Math.cos(angleInRadians);
+    const s = Math.sin(angleInRadians);
 
     return [1, 0, 0, 0, c, s, 0, -s, c];
   },
 
   yRotation: function (angleInRadians: number): mat3 {
-    var c = Math.cos(angleInRadians);
-    var s = Math.sin(angleInRadians);
+    const c = Math.cos(angleInRadians);
+    const s = Math.sin(angleInRadians);
 
     return [c, 0, -s, 0, 1, 0, s, 0, c];
   },
 
   zRotation: function (angleInRadians: number): mat3 {
-    var c = Math.cos(angleInRadians);
-    var s = Math.sin(angleInRadians);
+    const c = Math.cos(angleInRadians);
+    const s = Math.sin(angleInRadians);
 
     return [c, s, 0, -s, c, 0, 0, 0, 1];
   },
@@ -84,9 +85,9 @@ const m3 = {
   },
   transformPoint: function (m: mat3, v: vec3) {
     const dst = new Array<number>(9) as mat3;
-    var v0 = v[0];
-    var v1 = v[1];
-    var v2 = v[2];
+    const v0 = v[0];
+    const v1 = v[1];
+    const v2 = v[2];
 
     dst[0] = v0 * m[0 * 3 + 0] + v1 * m[1 * 3 + 0] + v2 * m[2 * 3 + 0];
     dst[1] = v0 * m[0 * 3 + 1] + v1 * m[1 * 3 + 1] + v2 * m[2 * 3 + 1];

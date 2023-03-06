@@ -1,4 +1,4 @@
-const MatType = Float32Array;
+import { mat3, mat4, vec3, vec4 } from "./types";
 import v3 from "./v3";
 const m4 = {
   multiply: function (a: mat4, b: mat4): mat4 {

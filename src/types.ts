@@ -5,9 +5,9 @@ type Tuple<
   R extends T[] = [],
 > = R['length'] extends N ? R : Tuple<T, N, [T, ...R]>;
 
-type mat3 = Tuple<number, 9>
-type mat4 =Tuple<number, 16>
+export type mat3 = Tuple<number, 9>
+export type mat4 =Tuple<number, 16>
 
-type vec3 = Tuple<number, 3>
-type vec4 = Tuple<number, 4>
+export type vec3 = Tuple<number, 3>
+export type vec4 = Tuple<number, 4>
 
